@@ -1,0 +1,139 @@
+$(window).on('load', function()
+{
+	$(".toggleTarget").click(function()
+	{
+		return toggleTarget.call(this);
+	});
+
+	$(".toggleTarget").keypress(function(event)
+	{
+		return processKeyPress(event, toggleTarget.bind(this));
+	});
+
+	$(".processLinkProtect").click(function()
+	{
+		return processLinkProtect.call(this);
+	});
+
+	$(".processLinkProtectInput").keypress(function(event)
+	{
+		return processKeyPress(event, processLinkProtect.bind(this));
+	});
+
+	$(".processLinkSignup").click(function()
+	{
+		return processLinkSignup.call(this);
+	});
+
+	$(".processLinkSignupInput").keypress(function(event)
+	{
+		return processKeyPress(event, processLinkSignup.bind(this));
+	});
+
+	$(".sensitiveContentModalButton").click(function()
+	{
+		$('#sensitiveContentModal').hide();
+	});
+
+	$(".basicLink").click(function()
+	{
+		processLinkClick(this, 'linkClick');
+	});
+
+	$(".socialLink").click(function()
+	{
+		processLinkClick(this, 'socialClick');
+	});
+});
+		function processLinkClick(e, type)
+		{
+			var analyticsData = {'lid':$(e).attr("data-id")};
+			linkAnalytics.track(type, analyticsData);
+		}
+
+		function processLinkSignup()
+		{
+			var id = jQuery.trim($(this).attr("data-id"));
+			var domain = jQuery.trim($(this).attr("data-domain"));
+			var email = jQuery.trim(jQuery.trim($("#protectedLinkSignup_"+id).val()));
+
+			if(!email)
+				return;
+
+			$("#linkMore_signup_loading_"+id).show();
+			$("#linkMore_signup_button_"+id).hide();
+
+		        $.post("/api", {action:"processLinkSignup", domain:domain, id:id, email:email},
+		        function(data)
+		        {
+		                if(data["error"] == "1")
+                		{
+		                        alert(data["message"]);
+                		}
+		                else
+                		{
+					$("#linkBox_signup_"+id).remove();
+					alert(data["message"]);
+                		}
+
+				$("#linkMore_signup_loading_"+id).hide();
+				$("#linkMore_signup_button_"+id).show();
+		        }, "json");
+		}
+
+		function toggleTarget()
+		{
+			var target = $(this).attr('data-target');
+			$("#"+target).toggle(1, function()
+			{
+				$("#"+target).find("input").focus();
+			});
+		}
+
+		function processKeyPress(e, f)
+		{
+		    if(!e || !f)
+		        return false;
+
+		    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
+		    {
+		        return f();
+		    }
+
+		    return true;
+		}
+
+		function processLinkProtect()
+		{
+			var id = jQuery.trim($(this).attr("data-id"));
+			var domain = jQuery.trim($(this).attr("data-domain"));
+			var type = jQuery.trim($(this).attr("data-type"));
+			var data = {};
+
+			if(type == "code")
+			{
+				data["passphrase"] = jQuery.trim($("#protectedLinkPassphrase_"+id).val());
+			}
+			else if(type == "birthday")
+			{
+				data["birthday"] = jQuery.trim($("#protectedLinkBirthday_"+id).val());
+			}
+
+		        $.post("/api", {action:"processLinkProtect", domain:domain, id:id, data:data},
+		        function(data)
+		        {
+		                if(data["error"] == "1")
+                		{
+		                        alert(data["message"]);
+                		}
+		                else
+                		{
+					// send analytics
+					var analyticsData = {'lid':id};
+					linkAnalytics.track('linkClick', analyticsData);
+
+					$("#linkMore_"+id).hide();
+					window.open(data["url"], "_blank").focus();
+                		}
+		        }, "json");
+		}

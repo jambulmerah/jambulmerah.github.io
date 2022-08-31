@@ -1,0 +1,270 @@
+footer
+{
+	width: 100%;
+	max-width: 680px;
+	margin: auto;
+	padding: 0px 20px 0px 20px;
+}
+
+header
+{
+	width: 100%;
+	max-width: 680px;
+	margin: auto;
+	padding: 0px 20px 0px 20px;
+}
+
+.parent
+{
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+  	padding: 0px 20px 0px 20px;
+  	margin: 0;
+	position: relative;
+}
+
+.child
+{
+	width: 100%;
+	max-width: 680px;
+	margin: auto;
+	border: 1px solid black;
+	padding: 5px 0px 5px 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	line-height: 60px;
+	position: relative;
+	height: auto;
+	background-color: white;
+}
+
+.inner-child-href
+{
+	border: none;
+	text-decoration: none;
+	display: flex;
+	text-align: center;
+	padding: 16px 65px 16px 65px;
+	position: relative;
+}
+.inner-child-href:hover
+{
+	text-decoration: underline;
+	color: black;
+}
+
+.fake-link
+{
+	cursor: pointer;
+}
+
+.inner-child-href-text
+{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	line-height: 1.5;
+ 	word-wrap: break-word;
+	word-break: break-word;
+}
+.inner-child-href-text:hover
+{
+}
+
+.linkContainer
+{
+	position: relative;
+}
+
+.linkImage
+{
+        width: 55px;
+        height: 55px;
+        margin-left: 5px;
+        position: absolute;
+}
+
+.loading_spinner
+{
+	display:none;
+}
+
+.linkMore
+{
+	margin-top:20px;
+	display:none;
+	line-height:1px;
+}
+          
+.sensitiveContentText
+{
+	line-height:10px;
+}
+          
+.moreContentLink
+{
+	margin-top:30px;
+	display:none;
+	padding:10px;
+}
+
+.linkMore
+{
+	padding:10px;
+}
+
+/* The Modal (background) */
+.sensitiveContentModal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(255,255,255); /* Fallback color */
+
+}
+
+/* Modal Content/Box */
+.sensitiveContentModal-content {
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+header
+{
+	padding-bottom: 10px;
+}
+
+footer
+{
+	padding-top: 10px;
+}
+
+.text-muted
+{
+    	opacity: 0.5;
+}
+
+*
+{
+}
+
+a
+{
+	color: black;
+}
+
+html
+{
+}
+
+body
+{
+}
+
+#footerBrandContainer
+{
+	width: 100%;
+	margin-top: 20px;
+}
+
+
+#mainContainer
+{
+	margin-top:10px;
+	position: relative;
+}
+
+.avatar
+{
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+.social-link
+{
+	text-decoration: none;
+	font-size: larger;
+	padding: 5px;
+}
+
+.porkbun-link
+{
+	text-decoration: none;
+	font-size: larger;
+	color: #EF7878;
+}
+
+.title
+{
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+.bio
+{
+	margin-top: 5px;
+}
+
+@keyframes shake
+{
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  1% { transform: translate(-1px, -2px) rotate(-1deg); }
+  2% { transform: translate(-3px, 0px) rotate(1deg); }
+  3% { transform: translate(3px, 2px) rotate(0deg); }
+  4% { transform: translate(1px, -1px) rotate(1deg); }
+  5% { transform: translate(-1px, 2px) rotate(-1deg); }
+  6% { transform: translate(-3px, 1px) rotate(0deg); }
+  7% { transform: translate(3px, 1px) rotate(-1deg); }
+  8% { transform: translate(-1px, -1px) rotate(1deg); }
+  9% { transform: translate(1px, 2px) rotate(0deg); }
+  10% { transform: translate(1px, -2px) rotate(-1deg); }
+  11% { transform: translate(1px, 1px) rotate(0deg); }
+}
+.animationShake
+{
+  animation: shake 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce
+{
+  0% { transform: translate(0px, -2px); }
+  1% { transform: translate(0px, -4px); }
+  2% { transform: translate(0px, -6px); }
+  3% { transform: translate(0px, -4px); }
+  4% { transform: translate(0px, -2px); }
+  5% { transform: translate(0px, -0px); }
+}
+.animationBounce
+{
+  animation: bounce 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse
+{
+  0%  {transform: scale(1.005);}
+  1%  {transform: scale(1.01);}
+  2%  {transform: scale(1.015);}
+  3%  {transform: scale(1.02);}
+  4%  {transform: scale(1.025);}
+  5%  {transform: scale(1.03);}
+  6%  {transform: scale(1.025);}
+  7%  {transform: scale(1.02);}
+  8%  {transform: scale(1.015);}
+  9%  {transform: scale(1.01);}
+  10%  {transform: scale(1.005);}
+  11%  {transform: scale(1);}
+}
+.animationPulse
+{
+  animation: pulse 5s;
+  animation-iteration-count: infinite;
+}
+
